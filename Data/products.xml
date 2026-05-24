@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <Product>
+    <ProductID>101</ProductID>
+    <ProductName>Wireless Mouse</ProductName>
+    <Category>Electronics</Category>
+    <Price>29.99</Price>
+    <Quantity>150</Quantity>
+  </Product>
+  <Product>
+    <ProductID>102</ProductID>
+    <ProductName>Ergonomic Office Chair</ProductName>
+    <Category>Furniture</Category>
+    <Price>189.50</Price>
+    <Quantity>45</Quantity>
+  </Product>
+  <Product>
+    <ProductID>103</ProductID>
+    <ProductName>Stainless Steel Bottle</ProductName>
+    <Category>Kitchenware</Category>
+    <Price>24.95</Price>
+    <Quantity>300</Quantity>
+  </Product>
+  <Product>
+    <ProductID>104</ProductID>
+    <ProductName>Running Shoes</ProductName>
+    <Category>Apparel</Category>
+    <Price>85.00</Price>
+    <Quantity>80</Quantity>
+  </Product>
+  <Product>
+    <ProductID>105</ProductID>
+    <ProductName>Mechanical Keyboard</ProductName>
+    <Category>Electronics</Category>
+    <Price>75.00</Price>
+    <Quantity>120</Quantity>
+  </Product>
+</Products>
