@@ -1,0 +1,134 @@
+﻿@model List<AssignmentFinals.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Product Inventory</h2>
+
+<button id="checkLowStock">
+    Check Low Stock Products
+</button>
+
+<div id="notifications"></div>
+<a asp-controller="Products" asp-action="Create" class="btn btn-primary">
+    Add New Product
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.Category</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.Status</td>
+
+                <td>
+                    <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.ProductID">
+                        Edit
+                    </a> |
+
+                    <form asp-controller="Products" asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.ProductID" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+    const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/inventoryHub")
+    .build();
+
+    // Receive messages
+    connection.on("ReceiveLowStockAlert", function (message) {
+    const div = document.getElementById("notifications");
+
+    const p = document.createElement("p");
+    p.innerText = message;
+
+    div.appendChild(p);
+    });
+
+    // Start SignalR connection (IMPORTANT)
+    async function startConnection() {
+    try {
+    await connection.start();
+    console.log("SignalR connected");
+    } catch (err) {
+    console.error("SignalR connection failed:", err);
+    setTimeout(startConnection, 3000);
+    }
+    }
+
+    startConnection(); // 🔥 THIS WAS MISSING
+
+    const button = document.getElementById("checkLowStock");
+
+    if (!button) {
+    console.error("Button not found!");
+    return;
+    }
+
+    button.addEventListener("click", async () => {
+
+    console.log("BUTTON CLICKED");
+
+    try {
+    const response = await fetch("/api/products/lowstock");
+
+    if (!response.ok) {
+    console.error("API failed:", response.status);
+    return;
+    }
+
+    const products = await response.json();
+
+    console.log("Low stock products:", products);
+
+    if (!products || products.length === 0) {
+    alert("No low stock products found.");
+    return;
+    }
+
+    for (const product of products) {
+
+    const message =
+    `Low stock alert: ${product.productName} has only ${product.quantity} unit(s) left.`;
+
+    if (connection.state === "Connected") {
+    await connection.invoke("BroadcastLowStock", message);
+    } else {
+    console.warn("SignalR not connected yet");
+    }
+    }
+
+    } catch (error) {
+    console.error("Button click error:", error);
+    }
+    });
+
+    });
+</script>

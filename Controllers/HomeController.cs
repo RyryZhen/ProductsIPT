@@ -1,94 +1,58 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AssignmentFinals.Data;
 using AssignmentFinals.Models;
+using AssignmentFinals.Services;
 
 namespace AssignmentFinals.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ProductXmlService _service;
 
-        // Injecting the MySQL database context
-        public HomeController(AppDbContext context)
+        public HomeController(ProductXmlService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // READ: Display all product records inside a table
-        public async Task<IActionResult> Index()
+        // READ: Display all products from XML
+        public IActionResult Index()
         {
-            var products = await _context.Products.ToListAsync();
+            var products = _service.GetProducts();
             return View(products);
         }
 
-        // CREATE: Render the clean input form
+        // CREATE (optional UI page)
         public IActionResult Create()
         {
             return View();
         }
 
-        // CREATE: Process form submission and write to MySQL
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product)
+        public IActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            _service.AddProduct(product);
+            return RedirectToAction("Index");
+        }
+
+        // EDIT
+        public IActionResult Edit(string id)
+        {
+            var product = _service.GetProductById(id);
             return View(product);
         }
 
-        // EDIT: Fetch specific product and load its fields into the form
-        public async Task<IActionResult> Edit(int? id)
+        [HttpPost]
+        public IActionResult Edit(Product product)
         {
-            if (id == null) return NotFound();
-
-            var product = await _context.Products.FindAsync(id);
-            if (product == null) return NotFound();
-
-            return View(product);
+            _service.UpdateProduct(product);
+            return RedirectToAction("Index");
         }
 
-        // EDIT: Save modified changes back into the MySQL database row
+        // DELETE
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Product product)
+        public IActionResult Delete(string id)
         {
-            if (id != product.ProductID) return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!_context.Products.Any(e => e.ProductID == product.ProductID)) return NotFound();
-                    else throw;
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
-
-        // DELETE: Securely wipe out the row from MySQL via form post execution
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
-            {
-                _context.Products.Remove(product);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(Index));
+            _service.DeleteProduct(id);
+            return RedirectToAction("Index");
         }
     }
 }

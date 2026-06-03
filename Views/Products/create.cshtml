@@ -9,34 +9,39 @@
         <div class="card-header bg-success text-white py-3">
             <h4 class="mb-0 fw-bold">Create Product Record</h4>
         </div>
+
         <div class="card-body p-4">
             <form asp-action="Create" method="post">
+
                 <div class="mb-3">
                     <label asp-for="ProductName" class="form-label fw-semibold">Product Name</label>
-                    <input asp-for="ProductName" class="form-control" placeholder="e.g., Wireless Mouse" required />
-                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                    <input asp-for="ProductName" class="form-control" required />
                 </div>
+
                 <div class="mb-3">
                     <label asp-for="Category" class="form-label fw-semibold">Category</label>
-                    <input asp-for="Category" class="form-control" placeholder="e.g., Electronics" required />
-                    <span asp-validation-for="Category" class="text-danger"></span>
+                    <input asp-for="Category" class="form-control" required />
                 </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Price" class="form-label fw-semibold">Price ($)</label>
-                        <input asp-for="Price" class="form-control" type="number" step="0.01" required />
-                        <span asp-validation-for="Price" class="text-danger"></span>
+                        <label asp-for="Price" class="form-label fw-semibold">Price (₱)</label>
+                        <input asp-for="Price" type="number" step="0.01" class="form-control" required />
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label asp-for="Quantity" class="form-label fw-semibold">Quantity</label>
-                        <input asp-for="Quantity" class="form-control" type="number" required />
-                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                        <input asp-for="Quantity" type="number" class="form-control" required />
                     </div>
                 </div>
+
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a asp-action="Index" class="btn btn-outline-secondary px-4">Cancel</a>
-                    <button type="submit" class="btn btn-success px-4 fw-bold">Save Product</button>
+                    <button type="submit" class="btn btn-success px-4 fw-bold">
+                        Save Product
+                    </button>
                 </div>
+
             </form>
         </div>
     </div>

@@ -1,38 +1,45 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Products>
   <Product>
-    <ProductID>101</ProductID>
-    <ProductName>Wireless Mouse</ProductName>
-    <Category>Electronics</Category>
-    <Price>29.99</Price>
-    <Quantity>150</Quantity>
+    <ProductID>P001</ProductID>
+    <ProductName>Ducati Desmosedici GP25</ProductName>
+    <Category>MotoGP Superbike</Category>
+    <Price>4500000</Price>
+    <Quantity>5</Quantity>
   </Product>
   <Product>
-    <ProductID>102</ProductID>
-    <ProductName>Ergonomic Office Chair</ProductName>
-    <Category>Furniture</Category>
-    <Price>189.50</Price>
-    <Quantity>45</Quantity>
+    <ProductID>P002</ProductID>
+    <ProductName>Yamaha YZR-M1</ProductName>
+    <Category>MotoGP Superbike</Category>
+    <Price>4200000</Price>
+    <Quantity>20</Quantity>
   </Product>
   <Product>
-    <ProductID>103</ProductID>
-    <ProductName>Stainless Steel Bottle</ProductName>
-    <Category>Kitchenware</Category>
-    <Price>24.95</Price>
-    <Quantity>300</Quantity>
+    <ProductID>P003</ProductID>
+    <ProductName>Honda RC213V</ProductName>
+    <Category>MotoGP Superbike</Category>
+    <Price>4300000</Price>
+    <Quantity>0</Quantity>
   </Product>
   <Product>
-    <ProductID>104</ProductID>
-    <ProductName>Running Shoes</ProductName>
-    <Category>Apparel</Category>
-    <Price>85.00</Price>
-    <Quantity>80</Quantity>
+    <ProductID>P004</ProductID>
+    <ProductName>KTM RC16</ProductName>
+    <Category>MotoGP Superbike</Category>
+    <Price>4400000</Price>
+    <Quantity>8</Quantity>
   </Product>
   <Product>
-    <ProductID>105</ProductID>
-    <ProductName>Mechanical Keyboard</ProductName>
-    <Category>Electronics</Category>
-    <Price>75.00</Price>
-    <Quantity>120</Quantity>
+    <ProductID>P006</ProductID>
+    <ProductName>Ducati Perry</ProductName>
+    <Category>sdg</Category>
+    <Price>35</Price>
+    <Quantity>3</Quantity>
+  </Product>
+  <Product>
+    <ProductID>P007</ProductID>
+    <ProductName>Ducati Perry</ProductName>
+    <Category>sdg</Category>
+    <Price>35</Price>
+    <Quantity>3</Quantity>
   </Product>
 </Products>
