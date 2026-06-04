@@ -12,7 +12,7 @@
     <ProductName>Yamaha YZR-M1</ProductName>
     <Category>MotoGP Superbike</Category>
     <Price>4200000</Price>
-    <Quantity>20</Quantity>
+    <Quantity>0</Quantity>
   </Product>
   <Product>
     <ProductID>P003</ProductID>
@@ -29,17 +29,17 @@
     <Quantity>8</Quantity>
   </Product>
   <Product>
-    <ProductID>P006</ProductID>
-    <ProductName>Ducati Perry</ProductName>
-    <Category>sdg</Category>
-    <Price>35</Price>
-    <Quantity>3</Quantity>
+    <ProductID>P005</ProductID>
+    <ProductName>Kawasaki ZX10R</ProductName>
+    <Category>Sports</Category>
+    <Price>2000000</Price>
+    <Quantity>10</Quantity>
   </Product>
   <Product>
-    <ProductID>P007</ProductID>
-    <ProductName>Ducati Perry</ProductName>
-    <Category>sdg</Category>
-    <Price>35</Price>
+    <ProductID>P006</ProductID>
+    <ProductName>Ducati Panigale V4SR</ProductName>
+    <Category>Sports</Category>
+    <Price>8000000</Price>
     <Quantity>3</Quantity>
   </Product>
 </Products>

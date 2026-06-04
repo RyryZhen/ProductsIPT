@@ -5,24 +5,123 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AssignmentFinals</title>
+
     <script type="importmap"></script>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Matcha Clean Theme -->
+    <style>
+        body {
+        background: linear-gradient(135deg, #f4f7f2, #e8f0e3);
+        font-family: 'Segoe UI', sans-serif;
+        color: #2f3e2f;
+        }
+
+        /* Soft container feel */
+        .matcha-card {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #d7e4d2;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(60, 90, 60, 0.08);
+        padding: 24px;
+        backdrop-filter: blur(8px);
+        }
+
+        /* Header */
+        .matcha-header {
+        background: #232443f4;
+        color: #f4f7f2;
+        padding: 18px 0;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 1px;
+        }
+
+        /* Titles */
+        h1,
+        h2,
+        h3 {
+        color: #2f4f3f;
+        font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn-primary {
+        background: #4f7d5a;
+        border: none;
+        transition: 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+        background: #3e6649;
+        transform: translateY(-1px);
+        }
+
+        /* Links */
+        a {
+        color: #4f7d5a;
+        text-decoration: none;
+        }
+
+        a:hover {
+        color: #2f4f3f;
+        }
+
+        /* Table */
+        table {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        }
+
+        th {
+        background: #e3efe0;
+        color: #2f4f3f;
+        }
+
+        td,
+        th {
+        border-color: #d7e4d2 !important;
+        }
+
+        /* Footer */
+        footer {
+        color: #6b7c6b;
+        }
+    </style>
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AssignmentFinals.styles.css" asp-append-version="true" />
 </head>
 
 <body>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="matcha-header">
+        Luke Zuri Bikes
+        <div style="font-size: 12px; opacity: 0.8;">
+            Ready to Race
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <main role="main" class="pb-3 matcha-card">
             @RenderBody()
         </main>
     </div>
 
-  
+    <footer class="text-center mt-5 mb-3">
+        <small>© Matcha Inventory System</small>
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

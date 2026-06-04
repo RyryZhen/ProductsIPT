@@ -78,21 +78,7 @@ namespace AssignmentFinals.Services
             }
         }
 
-        //     // DELETE
-        //     public void DeleteProduct(string id)
-        //     {
-        //         XDocument doc = XDocument.Load(GetFilePath());
 
-        //         var product = doc.Descendants("Product")
-        //             .FirstOrDefault(x => x.Element("ProductID")?.Value == id);
-
-        //         if (product != null)
-        //         {
-        //             product.Remove();
-        //             doc.Save(GetFilePath());
-        //         }
-        //     }
-        // }
         public void DeleteProduct(string id)
         {
             XDocument doc = XDocument.Load(GetFilePath());
